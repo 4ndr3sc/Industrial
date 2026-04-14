@@ -10,39 +10,39 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body class="font-sans antialiased bg-dark-core text-silver overflow-x-hidden">
-        <div class="flex min-h-screen">
+        <div x-data="{ tab: '{{ session('tab', 'dashboard') }}' }" class="flex min-h-screen">
             <aside class="w-64 bg-panel-core border-r border-cyan-dark flex flex-col sticky top-0 h-screen">
                 <div class="p-6 border-b border-cyan-dark">
                     <h1 class="font-orbitron text-cyan-400 text-xl tracking-tighter">CORE // SYS</h1>
                 </div>
 
                 <nav class="flex-1 px-4 py-6 space-y-2">
-    <p class="text-xs text-gray-500 font-mono mb-4 uppercase tracking-widest px-2">Navegación Táctica</p>
-    
-    <a href="{{ route('dashboard') }}" class="sidebar-link active">
-        <span class="icon">📊</span> DASHBOARD
-    </a>
+                    <p class="text-xs text-gray-500 font-mono mb-4 uppercase tracking-widest px-2">Navegación Táctica</p>
+                    
+                    <a href="#" @click.prevent="tab = 'dashboard'" :class="{'active': tab === 'dashboard'}" class="sidebar-link">
+                        <span class="icon">📊</span> DASHBOARD
+                    </a>
 
-    <a href="#" class="sidebar-link">
-        <span class="icon">🏗️</span> EQUIPOS
-    </a>
+                    <a href="#" @click.prevent="tab = 'equipos'" :class="{'active': tab === 'equipos'}" class="sidebar-link">
+                        <span class="icon">🏗️</span> EQUIPOS
+                    </a>
 
-    <a href="#" class="sidebar-link">
-        <span class="icon">📡</span> ESTADO DEL EQUIPO
-    </a>
+                    <a href="#" @click.prevent="tab = 'estado'" :class="{'active': tab === 'estado'}" class="sidebar-link">
+                        <span class="icon">📡</span> ESTADO DEL EQUIPO
+                    </a>
 
-    <a href="#" class="sidebar-link">
-        <span class="icon">📜</span> HISTORIAL
-    </a>
+                    <a href="#" @click.prevent="tab = 'historial'" :class="{'active': tab === 'historial'}" class="sidebar-link">
+                        <span class="icon">📜</span> HISTORIAL
+                    </a>
 
-    <a href="#" class="sidebar-link">
-        <span class="icon">👷</span> TECNICOS
-    </a>
+                    <a href="#" @click.prevent="tab = 'tecnicos'" :class="{'active': tab === 'tecnicos'}" class="sidebar-link">
+                        <span class="icon">👷</span> TECNICOS
+                    </a>
 
-    <a href="#" class="sidebar-link text-red-500 hover:bg-red-500/10">
-        <span class="icon">🚨</span> ALERTAS
-    </a>
-</nav>
+                    <a href="#" @click.prevent="tab = 'alertas'" :class="{'bg-red-500/20 text-red-400': tab === 'alertas'}" class="sidebar-link text-red-500 hover:bg-red-500/10">
+                        <span class="icon">🚨</span> ALERTAS
+                    </a>
+                </nav>
 
                 <div class="p-4 border-t border-cyan-dark">
                     <form method="POST" action="{{ route('logout') }}">
